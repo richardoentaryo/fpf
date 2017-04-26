@@ -1,0 +1,28 @@
+{
+    "name": "facade/fpf",
+    "description": "A simple PHP MVC Framework, integrated and empowered with composer dependency manager for packagist.",
+    "authors": [
+        {
+            "name": "Richard Oentaryo",
+            "email": "richardoentaryo@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "symfony/console": "~3.0.0",
+        "phpmailer/phpmailer": "~5.2",
+        "gregwar/captcha": "~1.1.1",
+        "twig/twig": "~1.31.0",
+        "doctrine/orm": "~2.5.5",
+        "phroute/phroute": "~2.1.0",
+        "phpseclib/phpseclib": "~2.0.4",
+        "robmorgan/phinx": "~0.6.6",
+        "respect/validation": "~1.1.10",
+        "jasongrimes/paginator": "~1.0",
+        "slim/csrf": "~0.8.1"
+    },
+    "autoload": {
+    	"psr-4": { "": ["Commands/", "core/", "app/controllers/", "app/models/", "app/config/", "core/helper"] }
+    }
+}
