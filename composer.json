@@ -1,5 +1,5 @@
 {
-    "name": "facade/fpf",
+    "name": "fpf/facadephpframework",
     "description": "A simple PHP MVC Framework, integrated and empowered with composer dependency manager for packagist.",
     "authors": [
         {
