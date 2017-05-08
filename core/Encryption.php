@@ -172,6 +172,34 @@ class Encryption
 
         return $result === 0;
     }
+    
+    public static function safeEncrypt($string)
+    {
+        $enc_input = $string;
+        $enc_method = 'AES-128-CTR';
+        $enc_key = Config::get("HASH_KEY");
+        $enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($enc_method));
+        $enc_result = openssl_encrypt($enc_input, $enc_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+
+        return $enc_result;
+    }
+
+    public static function safeDecrypt($string)
+    {
+        $crypted_token = $string;
+        $decrypted_token = null;
+
+        if(preg_match("/^(.*)::(.*)$/", $crypted_token, $regs))
+        {
+            // decrypt encrypted string
+            list(, $crypted_token, $enc_iv) = $regs;
+            $enc_method = 'AES-128-CTR';
+            $enc_key = Config::get("HASH_KEY");
+            $decrypted_token = openssl_decrypt($crypted_token, $enc_method, $enc_key, 0, hex2bin($enc_iv));
+        }
+
+        return $decrypted_token;
+    }
 }
 
 ?>
