@@ -29,6 +29,11 @@ class Session{
     public static function get($key){
         return array_key_exists($key, $_SESSION)? $_SESSION[$key]: null;
     }
+    
+    public static function dismiss($key)
+    {
+        if(array_key_exists($key, $_SESSION)) { unset($_SESSION[$key]); }
+    }
 
     public static function getAndDestroy($key){
 
@@ -91,6 +96,35 @@ class Session{
             // destroy session file on server
             session_destroy();
         }
+    }
+    
+    public static function addCart($itemSet)
+    {
+        if (empty($_SESSION['fpfCartList'])) {
+            $_SESSION['fpfCartList'] = array();
+        }
+
+        array_push($_SESSION['fpfCartList'], $itemSet);
+    }
+
+    public static function getCart()
+    {
+        return array_key_exists('fpfCartList', $_SESSION)? $_SESSION['fpfCartList']: null;
+    }
+
+    // this only a custom procedure for removing items in cart using array index
+    public static function sliceCart($cartIndex)
+    {
+        // call getCart function and store the array into variable
+        $cartArray = self::getCart();
+        unset($cartArray[$cartIndex]);
+
+        $_SESSION['fpfCartList'] = $cartArray;
+    }
+
+    public static function destroyCart()
+    {
+        $_SESSION['fpfCartList'] = array();
     }
 
 }
