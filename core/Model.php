@@ -102,19 +102,11 @@ abstract class Model
 
         foreach ($whereClause as $key => $value)
         {
-            $explodeKey = explode(" ", $key);
-
-            if(count($explodeKey) == 2)
-            {
-                $arrWhereStatement[] = $key . $value;
-            }
-            else
-            {
-                $arrWhereStatement[] = $key . " = " . $value;
-            }
+            $arrWhereStatement[] = $key . " = " . "'" . $value . "'";
         }
 
-        if(count($arrWhereStatement >= 2))
+
+        if(count($arrWhereStatement) >= 2)
             $whereStatement = implode(" and ", $arrWhereStatement);
         else
             $whereStatement = $arrWhereStatement[0];
