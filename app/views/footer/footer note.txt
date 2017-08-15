@@ -1,0 +1,2 @@
+This folder utilized for storing the footer segment of the view templates.
+forgewithlayout method will access the footers template from this folder.
