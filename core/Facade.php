@@ -193,10 +193,19 @@ class Facade{
     {
         $reflection = new ReflectionMethod ($controller, $method);
         $_args = $reflection->getNumberOfParameters();
+        $_argsWithDefault = 0;
 
-        if($_args == count($args)) { return true; }
+        // check the default value of parameters
+        foreach ($reflection->getParameters() as $param)
+        {
+            if($param->getDefaultValue() == null || preg_match('/\A[a-z0-9]+\z/i', $param->getDefaultValue()) != false)
+            {
+                $_argsWithDefault++;
+            }
+        }
+
+        if($_args == count($args) || $_argsWithDefault >= count($args)) { return true; }
         else { return false; }
-
     }
 
     private function invoke($controller, $method = "index", $args = [])
