@@ -1,0 +1,2 @@
+This folder utilized for storing the header segment of the view templates.
+forgewithlayout method will access the headers template from this folder.
