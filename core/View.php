@@ -31,7 +31,7 @@ class View
         }
     }
 
-    public function forgeWithLayouts($layoutName, $data = null)
+    public function forgeWithLayouts($headerName, $bodyName, $footerName, $data = null)
     {
         ob_start();
 
@@ -52,7 +52,7 @@ class View
         }
         else
         {
-            echo "Error! Could not completely found view template!";
+            echo "Error! terdapat template view yang tidak ditemukan!";
         }
     }
 }
