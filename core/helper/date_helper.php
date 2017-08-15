@@ -20,7 +20,7 @@
 		return date($datestr, $time);
     }
 
-    function standard_Date($fmt = 'DATE_RFC822', $time = NULL)
+    function standard_date($fmt = 'DATE_RFC822', $time = NULL)
 	{
 		if (empty($time))
 		{
