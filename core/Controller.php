@@ -43,7 +43,7 @@ class Controller
                     "Location: http://" .
                     $_SERVER['HTTP_HOST'] . "/" .
                     basename(getcwd()) . "/" .
-                    $url . "/", (preg_match('~^30[1237]$~', $code) > 0) ? $code : 302);
+                    $url, (preg_match('~^30[1237]$~', $code) > 0) ? $code : 302);
             }
 
             exit();
