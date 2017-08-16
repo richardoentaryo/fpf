@@ -43,7 +43,7 @@ class Cookies
         else
         {
             // if the cookie can't be found, create new cookie
-            setcookie($cookieName, $cookieValue, time() + $cookieName, Config::get("COOKIE_PATH"));
+            setcookie($cookieName, $cookieValue, time() + Config::get("EXPIRY_1DAY"), Config::get("COOKIE_PATH"));
         }
     }
 
