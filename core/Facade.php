@@ -51,28 +51,22 @@ class Facade{
             // validate the controller whether the controller exists or not
             if(!self::validateController($this->controller))
             {
-                echo "controller tidak ada<br>";
+                echo "Controller cannot be found!<br>";
                 // throw error exception
 
             }
             // if controller exists is valid then validate the methods
             else
             {
-                //echo "controller ada<br>";
-
                 // check if the method parameter is empty or not
                 if(!empty($this->method))
                 {
                     // validate method existence in controller
                     if(self::validateMethod($this->controller, $this->method))
                     {
-                        //echo "method ditemukan<br>";
-
                         // validate the number of method's arguments
                         if(self::validateArgs($this->controller, $this->method, $this->args))
                         {
-                            //echo "jumlah argumen sesuai<br>";
-
                             // everything is checked and valid
                             // finally instantiate the controller object, and call it's action method.
 
@@ -80,13 +74,13 @@ class Facade{
                         }
                         else
                         {
-                            echo "jumlah argumen tidak sesuai<br>";
+                            echo "Bad arguments given, arguments number is not valid!<br>";
                         }
 
                     }
                     else
                     {
-                        echo "method tidak ditemukan<br>";
+                        echo "Cannot find the specific method!<br>";
                         // throw error exception
                     }
                 }
@@ -95,7 +89,7 @@ class Facade{
                     $this->method = "index";
 
                     if(!method_exists($this->controller, $this->method)){
-                        echo "method index tidak ada<br>";
+                        echo "Index method doesn't exists!<br>";
                         //return $this->notFound();
                     }
 
