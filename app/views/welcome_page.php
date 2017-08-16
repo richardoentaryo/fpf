@@ -15,6 +15,7 @@
     <div class="jumbotron text-center">
         <h1> Welcome to FPF! </h1>
         <p> Facade PHP Framework, a very simple MVC framework skeleton for PHP. </p>
+        <a href="usermanual"><button type="button" class="btn btn-default">View Documentation</button></a>
     </div>
     <hr>
 
