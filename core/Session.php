@@ -11,6 +11,10 @@ class Session{
         // if the session is not yet set then start the session
         if (empty($session_id)) {
             session_start();
+            
+            if (empty($_SESSION['fpfCartList'])) {
+                $_SESSION['fpfCartList'] = array();
+            }
         }
     }
 
@@ -100,10 +104,6 @@ class Session{
     
     public static function addCart($itemSet)
     {
-        if (empty($_SESSION['fpfCartList'])) {
-            $_SESSION['fpfCartList'] = array();
-        }
-
         array_push($_SESSION['fpfCartList'], $itemSet);
     }
 
